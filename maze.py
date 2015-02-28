@@ -129,7 +129,7 @@ class Maze:
     def graphic(self):
         pygame.init()
         screen = pygame.display.set_mode((self.width * 32, self.height * 32))
-        pygame.display.set_caption('304pacman') 
+        pygame.display.set_caption('labSolve') 
         background = pygame.Surface(screen.get_size())
         background = background.convert()
         background.fill((0, 0, 0))
