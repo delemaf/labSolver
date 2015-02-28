@@ -1,0 +1,31 @@
+#!/usr/bin/python
+
+import sys
+import os
+from dijkstra import Dijkstra
+from maze import Maze
+
+def main():
+    if len(sys.argv) == 2 or len(sys.argv) == 3:
+        maze = Maze()
+        if len(sys.argv) == 2:
+            maze.open(sys.argv[1])
+        elif len(sys.argv) == 3:
+            if sys.argv[1].isdigit() and sys.argv[2].isdigit():
+                if (int(sys.argv[1]) < 71 and int(sys.argv[1]) > 4) \
+                   and (int(sys.argv[2]) < 71 and int(sys.argv[2]) > 4):
+                    maze.gen(int(sys.argv[1]), int(sys.argv[2]))
+                else:
+                    print 'Error: width or height are incorect (70 <> 5).'
+                    return 0
+            else:
+                print 'Error: width and height must be a number.'
+                return 0
+        Dijkstra(maze.get())
+        maze.dump()
+        maze.graphic()
+    else:
+        print + 'Usage: ./labsolver [map]\n       ./labsolver [width] [height]'   
+
+if __name__ == "__main__":
+    main()
